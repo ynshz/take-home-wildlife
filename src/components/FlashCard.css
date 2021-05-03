@@ -1,0 +1,93 @@
+.flashcard-container {
+  /* fill the available space horizontally */
+  width: 100% !important;
+  height: fit-content;
+  padding: 8px 8px 16px 8px;
+  /* avoid vertical break of the container */
+  -webkit-column-break-inside: avoid; /* Chrome, Safari */
+  page-break-inside: avoid; /* firefox 20+ */
+  break-inside: avoid-column; /* IE 11 */
+  display: table;
+  line-height: normal;
+}
+
+.flashcard {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  width: 100%;
+  height: fit-content;
+  font-size: 0.9rem;
+}
+
+.flashcard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.flashcard img {
+  width: 100%;
+  height: auto;
+}
+
+.attribution {
+  padding: 16px;
+  text-align: left;
+  font-size: 0.7rem;
+  color: #555;
+}
+
+/* description list styles */
+dl {
+  border: 1px solid #ccc;
+  padding: 0.5em;
+}
+
+dt {
+  float: left;
+  clear: left;
+  width: 80px;
+  text-align: right;
+  font-weight: bold;
+  color: #d73f09;
+}
+
+dt::after {
+  content: ":";
+}
+
+dd {
+  margin: 0 0 0 110px;
+  padding: 0 0 0.5em 0;
+}
+
+/* image/description container */
+.image-container {
+  position: relative;
+}
+
+section.description {
+  /* overlays the image when displayed */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: margin 0.3s;
+  margin: 0 0 0 -1000px;
+  overflow-y: scroll;
+}
+
+section.description.is-open {
+  margin-left: 0;
+}
+
+section.description::-webkit-scrollbar {
+  display: none;
+}
+section.description h2 {
+  font-size: 1.2rem;
+  padding: 8px;
+  margin: 0;
+}
