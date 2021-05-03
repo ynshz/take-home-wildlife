@@ -24,11 +24,9 @@ export function AnimalProvider({ children }) {
 
   useEffect(async () => {
     setLoading(true);
-
-    console.log(children);
     getAnimals(constants.ANIMALS_URL)
       .then((result) => {
-        setAnimals(result);
+        setAnimals(removeInvalidAnimals(result));
         setLoading(false);
       })
       .catch((error) => {
@@ -36,6 +34,21 @@ export function AnimalProvider({ children }) {
         setLoading(false);
       });
   }, []);
+
+  /**
+   * Removes invalid value in animals array
+   * @param {Array} animals original array of animals
+   * @returns {Array} new array of animals after invalid values have been removed
+   */
+  const removeInvalidAnimals = (animals) => {
+    let result = [];
+    animals.forEach((animal) => {
+      if (animal.name !== undefined) {
+        result.push(animal);
+      }
+    });
+    return result;
+  };
 
   /**
    * Get animals JSON array from url

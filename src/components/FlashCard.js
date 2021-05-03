@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./FlashCard.css";
 
 /**
@@ -7,7 +7,7 @@ import "./FlashCard.css";
  * @returns <FlashCard animal = {animal} />
  * @todo use Flow or prop-types to typecheck
  */
-export default function FlashCard({ animal }) {
+export default function FlashCard({ animal, currentAnimal }) {
   const descriptionRef = useRef();
   const {
     name,
@@ -20,6 +20,10 @@ export default function FlashCard({ animal }) {
     credit,
   } = animal;
 
+  useEffect(() => {
+    descriptionRef.current.classList.remove("is-open");
+  }, [currentAnimal]);
+
   const handleClickFlashCard = () => {
     descriptionRef.current.classList.toggle("is-open");
   };
@@ -30,19 +34,21 @@ export default function FlashCard({ animal }) {
       <div className="flashcard" onClick={handleClickFlashCard}>
         <div className="image-container">
           <section ref={descriptionRef} className="description">
-            <h2>{name}</h2>
-            <dl>
-              <dt>Class</dt>
-              <dd>{animalClass}</dd>
-              <dt>Order</dt>
-              <dd>{order}</dd>
-              <dt>Family</dt>
-              <dd>{family}</dd>
-              <dt>Genus</dt>
-              <dd>{genus}</dd>
-              <dt>Species</dt>
-              <dd>{species}</dd>
-            </dl>
+            <div className="description-content">
+              <h2>{name}</h2>
+              <dl>
+                <dt>Class</dt>
+                <dd>{animalClass}</dd>
+                <dt>Order</dt>
+                <dd>{order}</dd>
+                <dt>Family</dt>
+                <dd>{family}</dd>
+                <dt>Genus</dt>
+                <dd>{genus}</dd>
+                <dt>Species</dt>
+                <dd>{species}</dd>
+              </dl>
+            </div>
           </section>
 
           <img src={image} alt={image} className="animal-image" width="100%" />

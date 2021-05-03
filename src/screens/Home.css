@@ -1,44 +1,10 @@
 .container {
   padding: 8px;
   height: fit-content;
+  min-height: 100vh;
   text-align: center;
 }
 
 .container h1 {
   font-size: 1.5rem;
-}
-
-.gallery {
-  /* Remove vertical gaps */
-  line-height: 0;
-  -webkit-column-count: 4;
-  -webkit-column-gap: 10px;
-  -moz-column-count: 4;
-  -moz-column-gap: 10px;
-  column-count: 4;
-  column-gap: 0px;
-}
-
-@media (max-width: 1440px) {
-  .gallery {
-    -moz-column-count: 3;
-    -webkit-column-count: 3;
-    column-count: 3;
-  }
-}
-
-@media (max-width: 960px) {
-  .gallery {
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    column-count: 2;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1;
-  }
 }
